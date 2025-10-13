@@ -3,7 +3,7 @@
   "width": 900,
   "height": 450,
   "data": {
-    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/No_of_international_visitors_map.csv",
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/data/No_of_international_visitors_map.csv",
     "format": {
       "type": "csv",
       "parse": {"Number of international visitors": "number"}

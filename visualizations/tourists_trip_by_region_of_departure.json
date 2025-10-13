@@ -3,7 +3,7 @@
   "width": 900,
   "height": 450,
   "data": {
-    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/internation_tourists_trips_by_region_departure_area.csv",
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/data/internation_tourists_trips_by_region_departure_area.csv",
     "format": {
       "type": "csv",
       "parse": {
