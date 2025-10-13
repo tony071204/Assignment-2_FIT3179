@@ -1,0 +1,103 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/internation_tourists_trips_by_region_departure_area.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Year": "date:'%Y'",
+        "International tourist trips arrivals": "number"
+      }
+    }
+  },
+  "mark": {"type": "area", "opacity": 0.8},
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "title": null,
+      "axis": {
+        "format": "%Y",
+        "grid": false,
+        "ticks": false,
+        "labelFontSize": 14,
+        "titleFontSize": 16,
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "International tourist trips arrivals ",
+      "type": "quantitative",
+      "title": null,
+      "stack": "zero",
+      "axis": {
+        "format": ".2s",
+        "grid": false,
+        "ticks": false,
+        "labelFontSize": 14,
+        "titleFontSize": 16,
+        "values": [
+          0,
+          200000000,
+          400000000,
+          600000000,
+          800000000,
+          1000000000,
+          1200000000,
+          1400000000,
+          1600000000,
+          1800000000
+        ]
+      }
+    },
+    "color": {
+      "field": "Region",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": [
+          "Europe",
+          "East Asia and the Pacific",
+          "Americas",
+          "Africa",
+          "Middle East",
+          "South Asia"
+        ],
+        "range": [
+          "#7FA5D0",
+          "#C07B8C",
+          "#8FAD88",
+          "#D89C5F",
+          "#B4A7D6",
+          "#D67B9F"
+        ]
+      },
+      "legend": {
+        "orient": "right",
+        "labelFontSize": 13,
+        "symbolSize": 200,
+        "labelLimit": 250,
+        "offset": 20,
+        "title": "Region",
+        "titleFontSize": 14,
+        "titleFontWeight": "bold"
+      }
+    },
+    "tooltip": [
+      {"field": "Region", "type": "nominal", "title": "Region"},
+      {"field": "Year", "type": "temporal", "title": "Year", "format": "%Y"},
+      {
+        "field": "International tourist trips arrivals ",
+        "type": "quantitative",
+        "title": "Trips",
+        "format": ",.0f"
+      }
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFont": "sans-serif", "titleFont": "sans-serif"}
+  }
+}

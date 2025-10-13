@@ -1,0 +1,148 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/share%20of%20gdp%20tourism(%25).csv",
+    "format": {
+      "type": "csv",
+      "parse": {"Share of GDP from tourism(%)": "number"}
+    }
+  },
+  "transform": [
+    {
+      "window": [{"op": "row_number", "as": "rank"}],
+      "sort": [{"field": "Share of GDP from tourism(%)", "order": "descending"}]
+    },
+    {
+      "filter": "datum.rank <= 10 || datum.Countries == 'Australia'"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "rule", "strokeWidth": 4},
+      "encoding": {
+        "y": {
+          "field": "Countries",
+          "type": "nominal",
+          "sort": {
+            "field": "Share of GDP from tourism(%)",
+            "order": "descending"
+          },
+          "axis": {
+            "title": null,
+            "labelFontSize": 14,
+            "labelPadding": 10,
+            "ticks": false,
+            "grid": false
+          }
+        },
+        "x": {
+          "field": "Share of GDP from tourism(%)",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": {
+            "title": "Share of GDP (%)",
+            "titleFontSize": 16,
+            "labelFontSize": 14,
+            "grid": false,
+            "ticks": false,
+            "values": [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+          }
+        },
+        "x2": {"value": 0},
+        "color": {
+          "condition": {
+            "test": "datum.Countries == 'Australia'",
+            "value": "#FF6B35"
+          },
+          "value": "#6B8CAE"
+        },
+        "tooltip": [
+          {"field": "Countries", "type": "nominal", "title": "Country"},
+          {
+            "field": "Share of GDP from tourism(%)",
+            "type": "quantitative",
+            "title": "Tourism GDP Share (%)",
+            "format": ".2f"
+          },
+          {"field": "rank", "type": "quantitative", "title": "Rank"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 200
+      },
+      "encoding": {
+        "y": {
+          "field": "Countries",
+          "type": "nominal",
+          "sort": {
+            "field": "Share of GDP from tourism(%)",
+            "order": "descending"
+          }
+        },
+        "x": {"field": "Share of GDP from tourism(%)", "type": "quantitative"},
+        "color": {
+          "condition": {
+            "test": "datum.Countries == 'Australia'",
+            "value": "#FF6B35"
+          },
+          "value": "#4A90E2"
+        },
+        "tooltip": [
+          {"field": "Countries", "type": "nominal", "title": "Country"},
+          {
+            "field": "Share of GDP from tourism(%)",
+            "type": "quantitative",
+            "title": "Tourism GDP Share (%)",
+            "format": ".2f"
+          },
+          {"field": "rank", "type": "quantitative", "title": "Rank"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 15,
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "y": {
+          "field": "Countries",
+          "type": "nominal",
+          "sort": {
+            "field": "Share of GDP from tourism(%)",
+            "order": "descending"
+          }
+        },
+        "x": {"field": "Share of GDP from tourism(%)", "type": "quantitative"},
+        "text": {
+          "field": "Share of GDP from tourism(%)",
+          "type": "quantitative",
+          "format": ".1f"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Countries == 'Australia'",
+            "value": "#D64500"
+          },
+          "value": "#4A5F7A"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "labelFont": "sans-serif",
+      "titleFont": "sans-serif"
+    }
+  }
+}

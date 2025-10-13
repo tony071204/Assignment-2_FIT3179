@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Tourism Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  </head>
+  <body>
+    <div class="dashboard">
+      <div class="header">
+        <h1>Global Tourism Analytics</h1>
+        <div class="period">Annual Report 2021</div>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-icon">🌍</div>
+          <div class="metric-label">International Visitors</div>
+          <div class="metric-value">1.5B</div>
+          <div class="metric-sublabel">worldwide arrivals</div>
+          <div class="metric-badge">↑ 8.2%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">💼</div>
+          <div class="metric-label">Tourism Employment</div>
+          <div class="metric-value">330M</div>
+          <div class="metric-sublabel">jobs globally</div>
+          <div class="metric-badge">Growing</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">💰</div>
+          <div class="metric-label">Tourism Revenue</div>
+          <div class="metric-value">$1.9T</div>
+          <div class="metric-sublabel">global spending</div>
+          <div class="metric-badge">Record</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">📈</div>
+          <div class="metric-label">GDP Contribution</div>
+          <div class="metric-value">10.4%</div>
+          <div class="metric-sublabel">of global GDP</div>
+          <div class="metric-badge">Strong</div>
+        </div>
+      </div>
+
+      <div class="chart-container" style="margin-bottom: 20px">
+        <div class="chart-title">International Visitors by Country</div>
+        <div id="map-chart"></div>
+      </div>
+
+      <div class="chart-container" style="margin-bottom: 20px">
+        <div class="chart-title">Top 10 Most Visited Countries</div>
+        
+        <div class="chart-description">
+          Top 10 countries represent majority of global tourism activity.<br>
+          The United States leads global tourism rankings significantly.<br>
+          With 930 million visitors, USA dominates international travel.<br>
+          China follows in second place with 660 million.<br>
+          Ireland and India share similar visitor numbers around 170M.<br>
+          <span class="highlight-text">Australia</span>, ranks 11th with 77M.<br>
+          Despite being outside top 10, Australia maintains strong performance.<br>
+          The gap between USA and Australia is approximately 12x.<br>
+        </div>
+        
+        <div id="top10-bar-chart"></div>
+      </div>
+
+      <div class="chart-container" style="margin-bottom: 20px">
+        <div class="chart-title">Top shares of gdp from tourism</div>
+        <div class="chart-description">
+          This chart compares the share of GDP <br>
+          derived from tourism across several countries <br>
+          Macao tops the list with 52.3% share.<br>
+          Guam and Palau follow with around 20%.<br>
+          Fiji, Philippines, and Croatia near 12%.<br>
+          Antigua and Mauritius show strong reliance too.<br>
+          Jamaica and Mexico hover below 10% share.<br>
+          <span class="highlight-text">Australia</span> stands much lower at 3.1%.<br>
+          This highlights its diversified economic structure.<br>
+          Tourism plays smaller role in Australia's GDP.<br>
+        </div>
+        <div id="loli-pop-chart"></div>
+      </div>
+
+      <div class="chart-container" style="margin-bottom: 20px">
+        <div class="chart-title">Wealth Creates Travelers: GDP vs International Tourism(log scale)</div>
+        <div id="scatter-chart-1"></div>
+      </div>
+
+      <div class="chart-container" style="margin-bottom: 20px">
+        <div class="chart-title">Total Employment in Tourism Industries per 1,000 People</div>
+        <div id="heatmap"></div>
+      </div>
+
+      <div class="chart-container" style="margin-bottom: 20px">
+        <div class="chart-title">International Tourist Arrivals by Destination Region</div>
+        <div id="area-1"></div>
+      </div>
+
+      <div class="chart-container" style="margin-bottom: 20px">
+        <div class="chart-title">International Tourist Departures by Region of Origin</div>
+        <div id="area-2"></div>
+      </div>
+
+      <div class="chart-container" style="margin-bottom: 20px">
+        <div class="chart-title">Comparison of Inbound and Outbound Tourism Spending Across Top 10 Countries</div>
+        <div id="grouped-bar"></div>
+      </div>
+
+      <div class="chart-container" style="margin-bottom: 20px">
+        <div class="chart-title">Local vs. foreign tourists (log scale)</div>
+        <div id="scatter-chart-2"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var specVis1 = "visualizations/international_visitors_map.json";
+      var specVis2 = "visualizations/top10_most_visited_countries_bar.json";
+      var specVis3 = "visualizations/top_shares_of_gdp_tourism_lolipop.json";
+      var specVis4 = "visualizations/tourist_departures_vs_gdp_scatter.json";
+      var specVis5 = "visualizations/emp_in_tourism_per1000_heatmap.json";
+      var specVis6 = "visualizations/tourists_trip_by_destination_region.json";
+      var specVis7 = "visualizations/tourists_trip_by_region_of_departure.json";
+      var specVis8 = "visualizations/international_expenditure_grouped_bar.json"
+      var specVis9 = "visualizations/local_vs_foreign_tourists_scatter.json"
+
+
+      vegaEmbed('#map-chart', specVis1, { "actions": false });
+      vegaEmbed('#top10-bar-chart', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+      vegaEmbed('#loli-pop-chart', specVis3, { "actions": false }).then(function (result) {
+    }).catch(console.error);
+      vegaEmbed('#scatter-chart-1', specVis4, { "actions": false }).then(function (result) {
+    }).catch(console.error);
+      vegaEmbed('#heatmap', specVis5, { "actions": false }).then(function (result) {
+    }).catch(console.error);
+      vegaEmbed('#area-1', specVis6, { "actions": false }).then(function (result) {
+    }).catch(console.error);
+      vegaEmbed('#area-2', specVis7, { "actions": false }).then(function (result) {
+    }).catch(console.error);
+      vegaEmbed('#scatter-chart-2', specVis9, { "actions": false }).then(function (result) {
+    }).catch(console.error);
+      vegaEmbed('#grouped-bar', specVis8, { "actions": false }).then(function (result) {
+    }).catch(console.error);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/No_of_international_visitors_map.csv",
+    "format": {
+      "type": "csv",
+      "parse": {"Number of international visitors": "number"}
+    }
+  },
+  "transform": [
+    {
+      "window": [{"op": "row_number", "as": "rank"}],
+      "sort": [
+        {"field": "Number of international visitors", "order": "descending"}
+      ]
+    },
+    {
+      "filter": "datum.rank <= 10 || datum.Countries == 'Australia'"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "y": {
+          "field": "Countries",
+          "type": "nominal",
+          "sort": {
+            "field": "Number of international visitors",
+            "order": "descending"
+          },
+          "axis": {
+            "title": null,
+            "labelFontSize": 14,
+            "titleFontSize": 16,
+            "ticks": false,
+            "grid": false
+          }
+        },
+        "x": {
+          "field": "Number of international visitors",
+          "type": "quantitative",
+          "axis": {
+            "title": "Number of International Visitors",
+            "labelFontSize": 14,
+            "titleFontSize": 16,
+            "ticks": false,
+            "grid": false
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Countries == 'Australia'",
+            "value": "#FF6B35"
+          },
+          "value": "#6B8CAE"
+        },
+        "tooltip": [
+          {"field": "Countries", "type": "nominal", "title": "Country"},
+          {"field": "Number of international visitors", "type": "quantitative", "title": "Visitors", "format": ","},
+          {"field": "rank", "type": "quantitative", "title": "Rank"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 5, "fontSize": 11, "fontWeight": "bold"},
+      "encoding": {
+        "y": {
+          "field": "Countries",
+          "type": "nominal",
+          "sort": {
+            "field": "Number of international visitors",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "Number of international visitors",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Number of international visitors",
+          "type": "quantitative",
+          "format": ".2s"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Countries == 'Australia'",
+            "value": "#D64500"
+          },
+          "value": "#4A5F7A"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "labelFont": "sans-serif",
+      "titleFont": "sans-serif",
+      "grid": false,
+      "ticks": false
+    }
+  }
+}

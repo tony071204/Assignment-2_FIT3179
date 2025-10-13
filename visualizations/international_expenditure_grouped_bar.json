@@ -1,0 +1,108 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/International_expenditure_abroad_and_in_the_country_group_bar.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "International expenditure on travel in the country ": "number",
+        "International expenditure on travel abroad": "number"
+      }
+    }
+  },
+  "params": [
+    {
+      "name": "Sort_By",
+      "value": "International expenditure on travel in the country ",
+      "bind": {
+        "input": "select",
+        "options": [
+          "International expenditure on travel in the country ",
+          "International expenditure on travel abroad"
+        ],
+        "labels": [
+          "Inbound Tourism Spending",
+          "Outbound Tourism Spending"
+        ],
+        "name": "Sort Top 10 by: "
+      }
+    }
+  ],
+  "transform": [
+    { "calculate": "datum[Sort_By]", "as": "sort_value" },
+    {
+      "window": [{ "op": "rank", "as": "rank" }],
+      "sort": [{ "field": "sort_value", "order": "descending" }]
+    },
+    { "filter": "datum.rank <= 10" },
+    {
+      "fold": [
+        "International expenditure on travel in the country ",
+        "International expenditure on travel abroad"
+      ],
+      "as": ["Metric", "Value"]
+    },
+    {
+      "calculate": "datum.Metric === 'International expenditure on travel in the country ' ? 'Inbound Tourism Spending' : 'Outbound Tourism Spending'",
+      "as": "MetricLabel"
+    }
+  ],
+  "mark": { "type": "bar", "tooltip": true },
+  "encoding": {
+    "x": {
+      "field": "Countries",
+      "type": "nominal",
+      "sort": { "field": "sort_value", "order": "descending" },
+      "axis": {
+        "title": null,
+        "labelAngle": -45,
+        "labelFontSize": 14,
+        "ticks": false
+      }
+    },
+    "xOffset": { "field": "Metric", "type": "nominal" },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Tourism Spending (USD)",
+      "axis": {
+        "format": "$.2s",
+        "grid": false,
+        "ticks": false,
+        "titleFontSize": 16,
+        "labelFontSize": 14
+      }
+    },
+    "color": {
+      "field": "Metric",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "International expenditure on travel in the country ",
+          "International expenditure on travel abroad"
+        ],
+        "range": ["#4e79a7", "#e15759"]
+      },
+      "legend": {
+        "orient": "right",
+        "titleFontSize": 14,
+        "labelFontSize": 13,
+        "labelLimit": 300,
+        "title": null,
+        "offset": 0,
+        "labelExpr": "datum.label === 'International expenditure on travel in the country ' ? 'Inbound Tourism Spending' : 'Outbound Tourism Spending'"
+      }
+    },
+    "tooltip": [
+      { "field": "Countries", "type": "nominal", "title": "Country" },
+      { "field": "MetricLabel", "type": "nominal", "title": "Type" },
+      { "field": "Value", "type": "quantitative", "title": "Spending", "format": "$,.0f" }
+    ]
+  },
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "labelFont": "sans-serif", "titleFont": "sans-serif" }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/employment_in_tourism_per1000_heatmap.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.Year != null && datum.Countries != null && datum['Total employment in tourism industries per 1000 people'] != null"
+    },
+    {"filter": "datum.Year != '' && datum.Countries != ''"}
+  ],
+  "mark": "rect",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {
+        "labelAngle": 0,
+        "labelFontSize": 14,
+        "titleFontSize": 16,
+        "ticks": false
+      }
+    },
+    "y": {
+      "field": "Countries",
+      "type": "nominal",
+      "title": null,
+      "axis": {"labelFontSize": 14, "ticks": false}
+    },
+    "color": {
+      "field": "Total employment in tourism industries per 1000 people",
+      "type": "quantitative",
+      "title": "Employment per 1,000",
+      "scale": {"scheme": "viridis"},
+      "legend": {"orient": "right", "titleFontSize": 14, "labelFontSize": 13}
+    },
+    "tooltip": [
+      {"field": "Countries", "type": "nominal", "title": "Country"},
+      {"field": "Year", "type": "ordinal", "title": "Year"},
+      {
+        "field": "Total employment in tourism industries per 1000 people",
+        "type": "quantitative",
+        "title": "Employment per 1,000 people",
+        "format": ".2f"
+      }
+    ]
+  },
+  "config": {
+    "view": {"strokeWidth": 0},
+    "axis": {"domain": false, "grid": false, "labelFont": "sans-serif", "titleFont": "sans-serif"}
+  }
+}

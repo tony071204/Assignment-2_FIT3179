@@ -1,0 +1,161 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/tourist_departures_vs_gdp_scatter.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "GDP per capita( $)": "number",
+        "International tourist departures per 1,000 people": "number"
+      }
+    }
+  },
+  "params": [
+    {
+      "name": "Region_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Africa",
+          "Asia",
+          "Europe",
+          "North America",
+          "Oceania",
+          "South America"
+        ],
+        "labels": [
+          "Show All",
+          "Africa",
+          "Asia",
+          "Europe",
+          "North America",
+          "Oceania",
+          "South America"
+        ],
+        "name": "Region Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "Region_selection == null || datum.Region == Region_selection"},
+    {
+      "filter": "datum['GDP per capita( $)'] != null && datum['International tourist departures per 1,000 people'] != null && datum['International tourist departures per 1,000 people'] > 0 && datum['GDP per capita( $)'] > 0"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "GDP per capita( $)",
+      "type": "quantitative",
+      "title": "GDP per Capita (USD)",
+      "scale": {"type": "log", "domain": [500, 150000]},
+      "axis": {
+        "format": "$,.0f",
+        "grid": false,
+        "ticks": false,
+        "titleFont": "sans-serif",
+        "titleFontSize": 16,
+        "labelFont": "sans-serif",
+        "labelFontSize": 14,
+        "values": [500, 1000, 2000, 5000, 10000, 20000, 50000, 100000]
+      }
+    },
+    "y": {
+      "field": "International tourist departures per 1,000 people",
+      "type": "quantitative",
+      "title": "Tourist Departures per 1,000 People",
+      "scale": {"type": "log", "domain": [5, 5000]},
+      "axis": {
+        "format": ".0f",
+        "grid": false,
+        "ticks": false,
+        "titleFont": "sans-serif",
+        "titleFontSize": 16,
+        "labelFont": "sans-serif",
+        "labelFontSize": 14,
+        "values": [5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000]
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "circle", "size": 150, "opacity": 0.7},
+      "encoding": {
+        "color": {
+          "field": "Region",
+          "type": "nominal",
+          "title": "Region",
+          "scale": {
+            "domain": [
+              "Africa",
+              "Asia",
+              "Europe",
+              "North America",
+              "Oceania",
+              "South America"
+            ],
+            "range": [
+              "#a65628",
+              "#17becf",
+              "#1f77b4",
+              "#ff7f0e",
+              "#2ca02c",
+              "#9467bd"
+            ]
+          },
+          "legend": {
+            "titleAlign": "center",
+            "titleFontSize": 14,
+            "titleFontWeight": "bold",
+            "titlePadding": 10,
+            "labelFontSize": 13,
+            "symbolSize": 200,
+            "orient": "right",
+            "offset": 50,
+            "direction": "vertical"
+          }
+        },
+        "tooltip": [
+          {"field": "Countries", "type": "nominal", "title": "Country"},
+          {"field": "Region", "type": "nominal", "title": "Region"},
+          {
+            "field": "GDP per capita( $)",
+            "type": "quantitative",
+            "title": "GDP per Capita",
+            "format": "$,.0f"
+          },
+          {
+            "field": "International tourist departures per 1,000 people",
+            "type": "quantitative",
+            "title": "Departures per 1,000",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -8,
+        "fontSize": 10,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Countries", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum.Countries == 'Luxembourg' || datum.Countries == 'Norway' || datum.Countries == 'Singapore' || datum.Countries == 'Slovenia' || datum.Countries == 'Austria' || datum.Countries == 'Canada' || datum.Countries == 'Indonesia' || datum.Countries == 'Algeria' || datum.Countries == 'Argentina' || datum.Countries == 'Costa Rica'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    }
+  ],
+  "config": {"axis": {"labelFont": "sans-serif", "titleFont": "sans-serif"}}
+}
