@@ -1,0 +1,117 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/data/time_series_inbound_outbound_visitors_Aus_line_chart.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "fold": ["Visitors to Australia", "Australian travels abroad"],
+      "as": ["Category", "Visitors"]
+    },
+    {"calculate": "timeParse(datum.Time, '%b %Y')", "as": "Date"}
+  ],
+  "vconcat": [
+    {
+      "width": 900,
+      "height": 80,
+      "title": "Overview: Drag to select time period",
+      "mark": {"type": "line", "strokeWidth": 1.5},
+      "params": [
+        {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+      ],
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "title": "",
+          "axis": {"format": "%Y", "labelFontSize": 12, "grid": false}
+        },
+        "y": {
+          "field": "Visitors",
+          "type": "quantitative",
+          "title": "Millions",
+          "axis": {"labelFontSize": 12, "tickCount": 3, "grid": false}
+        },
+        "color": {
+          "field": "Category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Visitors to Australia", "Australian travels abroad"],
+            "range": ["#1f77b4", "#2ca02c"]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "width": 900,
+      "height": 300,
+      "title": "Detail: Selected time period",
+      "mark": {"type": "line", "strokeWidth": 2.5, "point": true},
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "title": "Year",
+          "scale": {"domain": {"param": "brush", "encoding": "x"}},
+          "axis": {
+            "format": "%b %Y",
+            "labelAngle": -45,
+            "labelFontSize": 14,
+            "titleFontSize": 16,
+            "grid": false,
+            "ticks": false
+          }
+        },
+        "y": {
+          "field": "Visitors",
+          "type": "quantitative",
+          "title": "Millions",
+          "axis": {
+            "labelFontSize": 14,
+            "titleFontSize": 16,
+            "grid": true,
+            "gridOpacity": 0.3,
+            "ticks": false
+          }
+        },
+        "color": {
+          "field": "Category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Visitors to Australia", "Australian travels abroad"],
+            "range": ["#1f77b4", "#2ca02c"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "direction": "horizontal",
+            "labelFontSize": 14,
+            "symbolSize": 200,
+            "offset": 10
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Date",
+            "type": "temporal",
+            "title": "Date",
+            "format": "%b %Y"
+          },
+          {"field": "Category", "type": "nominal", "title": "Type"},
+          {
+            "field": "Visitors",
+            "type": "quantitative",
+            "title": "Visitors (Millions)",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFont": "sans-serif", "titleFont": "sans-serif"}
+  }
+}

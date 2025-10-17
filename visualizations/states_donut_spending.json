@@ -1,0 +1,135 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/data/states_tourism_no_of_trips_spending_donut_chart.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "filter": "datum.States != null && datum.States != '' && trim(datum.States) != ''"
+    },
+    {
+      "calculate": "toNumber(replace(datum['% Spending'], '%', ''))",
+      "as": "percent_spending"
+    },
+    {
+      "calculate": "toNumber(replace(replace(datum['No of trips'], ',', ''), '\"', ''))",
+      "as": "num_trips"
+    },
+    {
+      "calculate": "toNumber(replace(replace(datum['Spending($M)'], ',', ''), '\"', ''))",
+      "as": "spending"
+    },
+    {"filter": "isValid(datum.percent_spending) && datum.percent_spending > 0"},
+    {
+      "calculate": "datum.States + ' ' + format(datum.percent_spending, '.1f') + '%'",
+      "as": "label_text"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 80,
+        "outerRadius": 140,
+        "stroke": "#fff",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "theta": {
+          "field": "percent_spending",
+          "type": "quantitative",
+          "stack": true,
+          "sort": {"field": "percent_spending", "order": "descending"}
+        },
+        "color": {
+          "field": "States",
+          "type": "nominal",
+          "scale": {
+            "domain": ["NSW", "VIC", "QLD", "WA", "SA", "TAS", "NT", "ACT"],
+            "range": [
+              "#4e79a7",
+              "#f28e2b",
+              "#e15759",
+              "#76b7b2",
+              "#59a14f",
+              "#edc948",
+              "#b07aa1",
+              "#ff9da7"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "States", "type": "nominal", "title": "State"},
+          {
+            "field": "num_trips",
+            "type": "quantitative",
+            "title": "No. of Trips",
+            "format": ","
+          },
+          {
+            "field": "spending",
+            "type": "quantitative",
+            "title": "Spending ($M)",
+            "format": ",.1f"
+          },
+          {
+            "field": "percent_spending",
+            "type": "quantitative",
+            "title": "% of Spending",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radius": 170,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"field": "label_text", "type": "nominal"},
+        "theta": {
+          "field": "percent_spending",
+          "type": "quantitative",
+          "stack": true,
+          "sort": {"field": "percent_spending", "order": "descending"}
+        },
+        "color": {
+          "field": "States",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "New South Wales",
+              "Victoria",
+              "Queensland",
+              "Western Australia",
+              "South Australia",
+              "Tasmania",
+              "Northern Territory",
+              "Australian Capital Territory"
+            ],
+            "range": [
+              "#4e79a7",
+              "#f28e2b",
+              "#e15759",
+              "#76b7b2",
+              "#59a14f",
+              "#edc948",
+              "#b07aa1",
+              "#ff9da7"
+            ]
+          },
+          "legend": null
+        }
+      }
+    }
+  ],
+  "config": {}
+}

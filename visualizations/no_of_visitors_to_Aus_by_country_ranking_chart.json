@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/data/Top_no_of_visitors_by_country_to_Aus_ranking_chart.csv",
+    "format": {
+      "type": "csv",
+      "parse": {"Year": "number", "Number of Visitors": "number"}
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.Year != null && datum.Country != null && datum['Number of Visitors'] != null"
+    },
+    {
+      "sort": [{"field": "Number of Visitors", "order": "descending"}],
+      "window": [{"op": "rank", "as": "rank"}],
+      "groupby": ["Year"]
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "orient": "vertical",
+    "strokeWidth": 3,
+    "point": {
+      "size": 120,
+      "filled": true,
+      "stroke": "white",
+      "strokeWidth": 1.5
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "axis": {
+        "title": "Year",
+        "labelAngle": 0,
+        "labelFontSize": 14,
+        "titleFontSize": 16,
+        "grid": false,
+        "ticks": false,
+        "domain": false
+      }
+    },
+    "y": {
+      "field": "rank",
+      "type": "ordinal",
+      "axis": {
+        "title": "Rank",
+        "labelFontSize": 14,
+        "titleFontSize": 16,
+        "grid": true,
+        "gridOpacity": 0.3,
+        "ticks": false,
+        "domain": false
+      },
+      "sort": "ascending"
+    },
+    "color": {
+      "field": "Country",
+      "type": "nominal",
+      "scale": {"scheme": "tableau10"},
+      "legend": {
+        "title": "Country",
+        "orient": "right",
+        "titleFontSize": 14,
+        "labelFontSize": 12,
+        "symbolSize": 150,
+        "symbolStrokeWidth": 2
+      }
+    },
+    "tooltip": [
+      {"field": "Country", "type": "nominal", "title": "Country"},
+      {"field": "Year", "type": "ordinal", "title": "Year"},
+      {"field": "rank", "type": "ordinal", "title": "Rank"},
+      {
+        "field": "Number of Visitors",
+        "type": "quantitative",
+        "title": "Visitors",
+        "format": ","
+      }
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFont": "sans-serif", "titleFont": "sans-serif"}
+  }
+}

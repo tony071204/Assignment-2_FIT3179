@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
-  "height": 450,
+  "width": 500,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/data/internation_tourists_trips_by_region_departure_area.csv",
     "format": {
@@ -75,8 +75,8 @@
         ]
       },
       "legend": {
-        "orient": "right",
-        "labelFontSize": 13,
+        "orient": "top",
+        "labelFontSize": 10,
         "symbolSize": 200,
         "labelLimit": 250,
         "offset": 20,

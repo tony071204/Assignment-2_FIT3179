@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
+  "width": 650,
   "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/data/employment_in_tourism_per1000_heatmap.csv"
@@ -35,7 +35,7 @@
       "type": "quantitative",
       "title": "Employment per 1,000",
       "scale": {"scheme": "viridis"},
-      "legend": {"orient": "right", "titleFontSize": 14, "labelFontSize": 13}
+      "legend": {"orient": "bottom", "titleFontSize": 14, "labelFontSize": 13, "gradientLength": 400, "gradientThickness": 20 }
     },
     "tooltip": [
       {"field": "Countries", "type": "nominal", "title": "Country"},

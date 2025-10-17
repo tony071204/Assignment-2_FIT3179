@@ -12,8 +12,8 @@
   <body>
     <div class="dashboard">
       <div class="header">
-        <h1>Global Tourism Analytics</h1>
-        <div class="period">Annual Report 2021</div>
+        <h1>Global and Australia tourism analytics</h1>
+        <div class="period">Annual Report 2024</div>
       </div>
 
       <div class="metrics-row">
@@ -27,16 +27,16 @@
         <div class="metric-card">
           <div class="metric-icon">💼</div>
           <div class="metric-label">Tourism Employment</div>
-          <div class="metric-value">330M</div>
+          <div class="metric-value">357M</div>
           <div class="metric-sublabel">jobs globally</div>
-          <div class="metric-badge">Growing</div>
+          <div class="metric-badge">↑ 6.3%</div>
         </div>
         <div class="metric-card">
           <div class="metric-icon">💰</div>
           <div class="metric-label">Tourism Revenue</div>
           <div class="metric-value">$1.9T</div>
-          <div class="metric-sublabel">global spending</div>
-          <div class="metric-badge">Record</div>
+          <div class="metric-sublabel">international spending</div>
+          <div class="metric-badge">↑ 11.6%</div>
         </div>
         <div class="metric-card">
           <div class="metric-icon">📈</div>
@@ -55,65 +55,328 @@
       <div class="chart-container" style="margin-bottom: 20px">
         <div class="chart-title">Top 10 Most Visited Countries</div>
         
-        <div class="chart-description">
-          Top 10 countries represent majority of global tourism activity.<br>
-          The United States leads global tourism rankings significantly.<br>
-          With 930 million visitors, USA dominates international travel.<br>
-          China follows in second place with 660 million.<br>
-          Ireland and India share similar visitor numbers around 170M.<br>
-          <span class="highlight-text">Australia</span>, ranks 11th with 77M.<br>
-          Despite being outside top 10, Australia maintains strong performance.<br>
-          The gap between USA and Australia is approximately 12x.<br>
+        <div style="display: grid; grid-template-columns: 350px 1fr; gap: 30px; align-items: start;">
+          <div class="chart-description">
+            The chart shows the top 10 most visited countries by international tourists<br>
+            The United States leads global tourism rankings significantly with 930 million visitors.<br>
+            China follows in second place with 660 million.<br>
+            Ireland and India share similar visitor numbers around 170M.<br>
+            <span class="highlight-text">Australia</span>, ranks 11th with 77M.<br>
+            Despite being outside top 10, Australia maintains strong performance.<br>
+            The gap between USA and Australia is approximately 12x.
+          </div>
+          
+          <div id="top10-bar-chart"></div>
         </div>
-        
-        <div id="top10-bar-chart"></div>
       </div>
 
       <div class="chart-container" style="margin-bottom: 20px">
         <div class="chart-title">Top shares of gdp from tourism</div>
-        <div class="chart-description">
-          This chart compares the share of GDP <br>
-          derived from tourism across several countries <br>
-          Macao tops the list with 52.3% share.<br>
-          Guam and Palau follow with around 20%.<br>
-          Fiji, Philippines, and Croatia near 12%.<br>
-          Antigua and Mauritius show strong reliance too.<br>
-          Jamaica and Mexico hover below 10% share.<br>
-          <span class="highlight-text">Australia</span> stands much lower at 3.1%.<br>
-          This highlights its diversified economic structure.<br>
-          Tourism plays smaller role in Australia's GDP.<br>
+
+        <div style="display: grid; grid-template-columns: 350px 1fr; gap: 30px; align-items: start;">
+          <div class="chart-description" style="text-align: left;">
+            This chart compares the share of GDP derived from tourism across several countries<br>
+            Macao leads by a significant margin, with 52.3% of its GDP derived from tourism.<br>
+            Other small economies like Guam (22%) and Palau (20%) also show high dependency on tourism.<br>
+            Countries such as Fiji, the Philippines, and Croatia see moderate contributions from tourism, ranging between 8.5% and 12.6% <br>
+            In comparision, <span class="highlight-text">Australia</span> has a much lower share, with only 3.1% of its GDP coming from tourism.<br>
+            This highlights the varying economic reliance on tourism across countries, with smaller economies relying more on tourism revenue than larger, more diversified economies like <span class="highlight-text">Australia</span> . <br>
+          </div>
+          
+          <div id="loli-pop-chart"></div>
         </div>
-        <div id="loli-pop-chart"></div>
       </div>
 
       <div class="chart-container" style="margin-bottom: 20px">
         <div class="chart-title">Wealth Creates Travelers: GDP vs International Tourism(log scale)</div>
+
+        <div style="display: grid; grid-template-columns: 350px 1fr; gap: 30px; align-items: start;">
+        <div class="chart-description" style="text-align: left;">
+            Observation: wealthier nations generate significantly more outbound travelers.<br><br>
+  
+            Luxembourg leads exceptionally at 4,000 departures per capita.<br>
+            European nations dominate high-income cluster (>$50K GDP) with 1,500-2,000 departures.<br>
+            Singapore, Norway, and Austria show strongest travel propensity.<br><br>
+            
+            Middle-income nations ($10-30K) vary widely: 100-700 departures per capita.<br>
+            African countries cluster at lower GDP ranges with minimal outbound tourism.<br><br>
+            
+            <strong>Key insight:</strong> 
+            Doubling GDP typically triples outbound travel rates.
+        </div>
         <div id="scatter-chart-1"></div>
       </div>
 
       <div class="chart-container" style="margin-bottom: 20px">
         <div class="chart-title">Total Employment in Tourism Industries per 1,000 People</div>
-        <div id="heatmap"></div>
+        
+        <div style="display: grid; grid-template-columns: 350px 1fr; gap: 30px; align-items: start;">
+          <div class="chart-description" style="text-align: left;">
+            The heatmap illustrates tourism employment density from 2018 to 2022, highlighting global trends in tourism industry jobs per 1,000 people.<br>
+            Macao consistently leads with the highest concentration of tourism workers, shown by yellow cells, especially during non-pandemic years<br>
+            <span class="highlight-text">Australia</span> shows consistently low purple values throughout years implies tourism is less of a dominant industry in this country.<br> 
+            Countries like Monaco and Macao, being highly dependent on tourism, also show high values,<br>
+            while Spain demonstrates stable, moderate tourism employment.<br>
+            The chart notably captures the significant downturn in tourism employment during the COVID-19 pandemic, with darker shading in 2020-2021 across all countries.<br>            
+          </div>
+          
+          <div id="heatmap"></div>
+        </div>
       </div>
 
-      <div class="chart-container" style="margin-bottom: 20px">
-        <div class="chart-title">International Tourist Arrivals by Destination Region</div>
-        <div id="area-1"></div>
-      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+  
+        <div class="chart-container" style="min-width: 0;">
+          <div class="chart-title">International Tourist Arrivals by Destination Region</div>
+          <div id="area-1" style="max-width: 100%; overflow: hidden;"></div>
+        </div>
 
-      <div class="chart-container" style="margin-bottom: 20px">
-        <div class="chart-title">International Tourist Departures by Region of Origin</div>
-        <div id="area-2"></div>
+        <div class="chart-container" style="min-width: 0;">
+          <div class="chart-title">International Tourist Departures by Region of Origin</div>
+          <div id="area-2" style="max-width: 100%; overflow: hidden;"></div>
+        </div>
+
       </div>
 
       <div class="chart-container" style="margin-bottom: 20px">
         <div class="chart-title">Comparison of Inbound and Outbound Tourism Spending Across Top 10 Countries</div>
-        <div id="grouped-bar"></div>
+        
+        <div style="display: grid; grid-template-columns: 350px 1fr; gap: 30px; align-items: start;">
+          <div class="chart-description" style="text-align: left;">
+            The charts compare inbound and outbound tourism spending across top 10 countries and <span class="highlight-text">Australia</span>.<br>
+            United States leads inbound tourism with $210 billion, reflecting a strong tourism sector.<br>
+            China has a significant imbalance, with much higher outbound spending at $270 billion annually compared to inbound at $64 billion annually, highlighting its role as a major exporter of tourism <br>
+            Countries like Germany and UK show a more balanced spending pattern, with slight preference for outbound tourism<br>
+            <span class="highlight-text">Australia</span> on the other hand, has high inbound spending relative to its outbound ($45B vs $37B), indicating it is a net importer of tourism.<br>
+          </div>
+          
+          <div id="grouped-bar"></div>
+        </div>
       </div>
 
-      <div class="chart-container" style="margin-bottom: 20px">
-        <div class="chart-title">Local vs. foreign tourists (log scale)</div>
-        <div id="scatter-chart-2"></div>
+
+            <!-- Part 2: Australia Tourism Section -->
+      <div class="section-divider" style="margin: 60px 0 40px 0;">
+        <div style="text-align: center; position: relative;">
+          <hr style="border: none; border-top: 2px solid #e0e0e0; margin: 0;">
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 0 40px;">
+            <h2 style="margin: 0; color: #2c3e50; font-size: 28px; font-weight: 600; white-space: nowrap;">
+              🦘 Australia: A more comprehensive exploration
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Australia Metrics Cards -->
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-icon">✈️</div>
+          <div class="metric-label">International Visitors</div>
+          <div class="metric-value">8.3M</div>
+          <div class="metric-sublabel">short-term visitors</div>
+          <div class="metric-badge">↑ 12.2%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">💼</div>
+          <div class="metric-label">Tourism Employment</div>
+          <div class="metric-value">714K</div>
+          <div class="metric-sublabel">jobs in Australia</div>
+          <div class="metric-badge">↑ 3.4%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">💵</div>
+          <div class="metric-label">Tourism Revenue</div>
+          <div class="metric-value">$44.8B</div>
+          <div class="metric-sublabel">total receiving</div>
+          <div class="metric-badge">Strong</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">🎯</div>
+          <div class="metric-label">GDP Share</div>
+          <div class="metric-value">3.1%</div>
+          <div class="metric-sublabel">of national GDP</div>
+          <div class="metric-badge">Stable</div>
+        </div>
+      </div>
+
+        
+        <!-- Australia Tourism Charts -->
+        <div class="chart-container" style="margin-bottom: 20px">
+          <div class="chart-title" style="text-align: center;">
+            Australia Tourism: Inbound Visitors vs Outbound Travelers
+          </div>
+          
+          <div style="display: flex; justify-content: center; margin-top: 20px;">  
+            <div id="aus-line" style="max-width: 1000px;"></div>
+          </div>
+        </div>
+
+       <div class="chart-container" style="margin-bottom: 20px">
+          <div class="chart-title" style="text-align: center;">
+            Top Countries by travellers to Australia: Rankings Over Time
+          </div>
+          
+          <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <div id="aus-rank" style="max-width: 1000px;"></div>
+          </div>
+       </div>
+
+        <div class="chart-container" style="margin-bottom: 20px; overflow: hidden;">
+          <div class="chart-title" style="text-align: center;">Travel to States distribution</div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 300px 1fr; gap: 20px; margin-top: 20px; align-items: start;">
+            <!-- Left Chart -->
+            <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+              <div style="font-weight: 600; margin-bottom: 10px; color: #2c3e50; font-size: 16px;">
+                By Number of Trips
+              </div>
+              <div id="aus-donut-1"></div>
+            </div>
+            
+            <!-- Middle Text -->
+            <div style="padding: 20px; text-align: left; line-height: 1.8; padding-top: 60px;">
+              <p style="margin-bottom: 12px;">
+                <strong style="color: #4e79a7;">NSW</strong> leads with <strong>37.1%</strong> of trips and <strong>35.7%</strong> of spending.
+              </p>
+              <p style="margin-bottom: 12px;">
+                <strong style="color: #f28e2b;">Victoria</strong> follows as second largest: <strong>26.1%</strong> trips, <strong>25.4%</strong> spending.
+              </p>
+              <p style="margin-bottom: 12px;">
+                <strong style="color: #e15759;">Queensland</strong> shows higher spending per trip: <strong>18.4%</strong> trips but <strong>20.0%</strong> spending.
+              </p>
+              <p>
+                <strong style="color: #76b7b2;">WA</strong>, <strong style="color: #59a14f;">SA</strong>, and smaller territories contribute remaining shares.
+              </p>
+            </div>
+            
+            <!-- Right Chart -->
+            <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+              <div style="font-weight: 600; margin-bottom: 10px; color: #2c3e50; font-size: 16px;">
+                By Spending ($M)
+              </div>
+              <div id="aus-donut-2"></div>
+            </div>
+          </div>
+
+        <div class="chart-container" style="margin-bottom: 20px; overflow: hidden;">
+          <div class="chart-title" style="text-align: center;">Travel Reasons to Australia distribution</div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 350px 1fr; gap: 30px; margin-top: 20px; align-items: center;">
+            <!-- Left Chart -->
+            <div style="text-align: center;">
+              <div style="font-weight: 600; margin-bottom: 10px; font-size: 16px;">By Number of Trips</div>
+              <div id="aus-pie-1"></div>
+            </div>
+            
+            <!-- Middle Text -->
+            <div style="padding: 20px; text-align: left; line-height: 1.8;">
+              <p style="margin-bottom: 12px;">
+                <strong style="color: #4e79a7;">Holiday travel</strong> dominates both metrics, accounting for <strong>42.3%</strong> of spending.
+              </p>
+              <p style="margin-bottom: 12px;">
+                <strong style="color: #f28e2b;">Visiting friends/relatives</strong> shows the biggest gap: <strong>34.3%</strong> of trips but only <strong>15.7%</strong> of spending.
+              </p>
+              <p style="margin-bottom: 12px;">
+                <strong style="color: #76b7b2;">Education travel</strong> has high spending per trip: <strong>34.2%</strong> of trips equals <strong>6.6%</strong> spending.
+              </p>
+              <p>
+                <strong style="color: #e15759;">Business</strong> and <strong style="color: #59a14f;">Employment</strong> travel contribute smaller shares to both categories.
+              </p>
+            </div>
+            
+            <!-- Right Chart -->
+            <div style="text-align: center;">
+              <div style="font-weight: 600; margin-bottom: 10px; font-size: 16px;">By Spending ($M)</div>
+              <div id="aus-pie-2"></div>
+            </div>
+          </div>
+          
+          <!-- Shared Legend -->
+          <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 20px; font-size: 12px;">
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <div style="width: 12px; height: 12px; background: #4e79a7;"></div>
+              <span>Holiday</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <div style="width: 12px; height: 12px; background: #f28e2b;"></div>
+              <span>Visiting friends and relatives</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <div style="width: 12px; height: 12px; background: #e15759;"></div>
+              <span>Business</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <div style="width: 12px; height: 12px; background: #76b7b2;"></div>
+              <span>Education</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <div style="width: 12px; height: 12px; background: #59a14f;"></div>
+              <span>Employment</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <div style="width: 12px; height: 12px; background: #edc948;"></div>
+              <span>Other Reason</span>
+            </div>
+          </div>
+      
+        
+        <div class="metadata-container" style="max-width: 1200px; margin: 40px auto 60px; padding: 30px; background: #f8f9fa; border-left: 4px solid #4e79a7; border-radius: 8px;">
+          <h3 style="margin: 0 0 20px 0; color: #2c3e50; font-size: 20px; font-weight: 600;">
+            📊 Data & Metadata
+          </h3>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <!-- Left Column -->
+            <div>
+              <div style="margin-bottom: 20px;">
+                <h4 style="margin: 0 0 8px 0; color: #4e79a7; font-size: 16px; font-weight: 600;">Data Sources</h4>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #555;">
+                  <li>Our World in Data: https://ourworldindata.org/tourism</li>
+                  <li>Map Data: https://www.naturalearthdata.com/</li>
+                  <li>Australian Government Data: https://www.tra.gov.au/en/international/international-tourism-results#ref5</li>
+                  <li>Australian Bureau of Statistics (ABS):https://www.abs.gov.au/statistics/industry/tourism-and-transport/overseas-arrivals-and-departures-australia/aug-2025</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 style="margin: 0 0 8px 0; color: #4e79a7; font-size: 16px; font-weight: 600;">Time Period</h4>
+                <p style="margin: 0; color: #555; line-height: 1.8;">
+                  Data coverage: 2015-2025<br>
+                  Last updated: October 2025
+                </p>
+              </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div>
+              <div style="margin-bottom: 20px;">
+                <h4 style="margin: 0 0 8px 0; color: #4e79a7; font-size: 16px; font-weight: 600;">Visualization Tools</h4>
+                <p style="margin: 0; color: #555; line-height: 1.8;">
+                  Built with Vega-Lite v5<br>
+                  Interactive charts powered by Vega-Embed
+                </p>
+              </div>
+              
+              <div>
+                <h4 style="margin: 0 0 8px 0; color: #4e79a7; font-size: 16px; font-weight: 600;">Credits</h4>
+                <p style="margin: 0; color: #555; line-height: 1.8;">
+                  Created by: Trung Dam Duc-33670528<br>
+                  Course: FIT3179 Data Visualization<br>
+                  Institution: Monash University
+                </p>
+              </div>
+
+              <!-- Footer Note -->
+              <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #ddd;">
+                <p style="margin: 0; font-size: 13px; color: #777; line-height: 1.6;">
+                  <strong>Note:</strong> All data is publicly available via given link. 
+                  Some visualizations use logarithmic scales for better data representation. 
+                  Most visualizations use data from 2024, the most recent year, except for time-series charts where the year is already specified.
+                </p>
+              </div>
+            </div>
+          </div>          
+
       </div>
     </div>
 
@@ -128,26 +391,32 @@
       var specVis8 = "visualizations/international_expenditure_grouped_bar.json"
       var specVis9 = "visualizations/local_vs_foreign_tourists_scatter.json"
 
+      // Australia Tourism Visualizations
+      var specAus1 = "visualizations/australia_inbound_vs_outbound_line_chart.json";
+      var specAus2 = "visualizations/no_of_visitors_to_Aus_by_country_ranking_chart.json";
+      var specAus3 = "visualizations/states_donut_spending.json";
+      var specAus4 = "visualizations/states_donut_trips.json";
+      var specAus5 = "visualizations/reasons_pie_spending.json";
+      var specAus6 = "visualizations/reasons_pie_trips.json";
+
 
       vegaEmbed('#map-chart', specVis1, { "actions": false });
-      vegaEmbed('#top10-bar-chart', specVis2, { "actions": false }).then(function (result) {
+      vegaEmbed('#top10-bar-chart', specVis2, { "actions": false }).then(function (result) {}).catch(console.error);
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-      vegaEmbed('#loli-pop-chart', specVis3, { "actions": false }).then(function (result) {
-    }).catch(console.error);
-      vegaEmbed('#scatter-chart-1', specVis4, { "actions": false }).then(function (result) {
-    }).catch(console.error);
-      vegaEmbed('#heatmap', specVis5, { "actions": false }).then(function (result) {
-    }).catch(console.error);
-      vegaEmbed('#area-1', specVis6, { "actions": false }).then(function (result) {
-    }).catch(console.error);
-      vegaEmbed('#area-2', specVis7, { "actions": false }).then(function (result) {
-    }).catch(console.error);
-      vegaEmbed('#scatter-chart-2', specVis9, { "actions": false }).then(function (result) {
-    }).catch(console.error);
-      vegaEmbed('#grouped-bar', specVis8, { "actions": false }).then(function (result) {
-    }).catch(console.error);
+      vegaEmbed('#loli-pop-chart', specVis3, { "actions": false }).then(function (result) {}).catch(console.error);
+      vegaEmbed('#scatter-chart-1', specVis4, { "actions": false }).then(function (result) {}).catch(console.error);
+      vegaEmbed('#heatmap', specVis5, { "actions": false }).then(function (result) {}).catch(console.error);
+      vegaEmbed('#area-1', specVis6, { "actions": false }).then(function (result) {}).catch(console.error);
+      vegaEmbed('#area-2', specVis7, { "actions": false }).then(function (result) {}).catch(console.error);
+      vegaEmbed('#scatter-chart-2', specVis9, { "actions": false }).then(function (result) {}).catch(console.error);
+      vegaEmbed('#grouped-bar', specVis8, { "actions": false }).then(function (result) {}).catch(console.error);
 
+      vegaEmbed('#aus-line', specAus1, { "actions": false }).then(function (result) {}).catch(console.error);
+      vegaEmbed('#aus-rank', specAus2, { "actions": false }).then(function (result) {}).catch(console.error);
+      vegaEmbed('#aus-donut-1', specAus3, { "actions": false }).then(function (result) {}).catch(console.error);
+      vegaEmbed('#aus-donut-2', specAus4, { "actions": false }).then(function (result) {}).catch(console.error);
+      vegaEmbed('#aus-pie-1', specAus5, { "actions": false }).then(function (result) {}).catch(console.error);
+      vegaEmbed('#aus-pie-2', specAus6, { "actions": false }).then(function (result) {}).catch(console.error);
     </script>
   </body>
 </html>

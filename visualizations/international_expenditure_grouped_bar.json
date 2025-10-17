@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
+  "width": 650,
   "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/data/International_expenditure_abroad_and_in_the_country_group_bar.csv",
@@ -86,7 +86,7 @@
         "range": ["#4e79a7", "#e15759"]
       },
       "legend": {
-        "orient": "right",
+        "orient": "top",
         "titleFontSize": 14,
         "labelFontSize": 13,
         "labelLimit": 300,

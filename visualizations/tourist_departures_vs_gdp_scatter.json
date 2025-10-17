@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
-  "height": 450,
+  "width": 650,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/data/tourist_departures_vs_gdp_scatter.csv",
     "format": {
@@ -112,9 +112,9 @@
             "titlePadding": 10,
             "labelFontSize": 13,
             "symbolSize": 200,
-            "orient": "right",
+            "orient": "top",
             "offset": 50,
-            "direction": "vertical"
+            "direction": "horizontal"
           }
         },
         "tooltip": [

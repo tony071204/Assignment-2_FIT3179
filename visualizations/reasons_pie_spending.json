@@ -1,0 +1,87 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 300,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tony071204/Assignment-2_FIT3179/refs/heads/main/data/reasons_to_travel_radial_chart.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "filter": "datum.Reasons != null && datum.Reasons != '' && trim(datum.Reasons) != ''"
+    },
+    {
+      "calculate": "toNumber(replace(datum['%spending'], '%', ''))",
+      "as": "percent_spending"
+    },
+    {
+      "calculate": "toNumber(replace(datum['No of trips'], ',', ''))",
+      "as": "num_trips"
+    },
+    {
+      "calculate": "toNumber(replace(replace(datum['Spending($M)'], ',', ''), '\"', ''))",
+      "as": "spending"
+    },
+    {"filter": "isValid(datum.percent_spending) && datum.percent_spending > 0"}
+  ],
+  "mark": {
+    "type": "arc",
+    "innerRadius": 0,
+    "outerRadius": 140,
+    "stroke": "#fff",
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "theta": {
+      "field": "percent_spending",
+      "type": "quantitative",
+      "stack": true,
+      "sort": {"field": "percent_spending", "order": "descending"}
+    },
+    "color": {
+      "field": "Reasons",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Holiday",
+          "Visiting friends and relatives",
+          "Business",
+          "Education",
+          "Employment",
+          "Other Reason"
+        ],
+        "range": [
+          "#4e79a7",
+          "#f28e2b",
+          "#e15759",
+          "#76b7b2",
+          "#59a14f",
+          "#edc948"
+        ]
+      },
+      "legend":null
+      
+    },
+    "tooltip": [
+      {"field": "Reasons", "type": "nominal", "title": "Reason"},
+      {
+        "field": "num_trips",
+        "type": "quantitative",
+        "title": "No. of Trips",
+        "format": ","
+      },
+      {
+        "field": "spending",
+        "type": "quantitative",
+        "title": "Spending ($M)",
+        "format": ",.1f"
+      },
+      {
+        "field": "percent_spending",
+        "type": "quantitative",
+        "title": "% of Spending",
+        "format": ".1f"
+      }
+    ]
+  }
+}
